@@ -12,13 +12,26 @@
 	<h1>QRCode generator</h1>
 	<h2>Change text and hit enter</h2>
 	<input id="text" type="text" value="http://www.velosio.com" style="width:100%;"/>
+	<select id="quality" name="quality" title="quality" onChange="changeQR()">
+		<option value="0">Low - 7%</option>
+		<option value="1">Medium - 15%</option>
+		<option value="2" selected>Quartile - 25%</option>
+		<option value="3">High - 30%</option>
+	</select>
+	<select id="size" name="quality" title="quality" onChange="changeQR()">
+		<option value="75">75px x 75px</option>
+		<option value="150">150px x 150px</option>
+		<option value="300" >300px x 300px</option>
+		<option value="400" selected>400px x 400px</option>
+	</select>
 </div>
 	<div id="qrcode" style="width:400px; height:400px; margin-top:15px;margin-left:calc(50vw - 200px);"></div>
 <script type="text/javascript">
 var qrcode = new QRCode(document.getElementById("qrcode"), {
-	width : 400,
-	height : 400
-});
+		width :  parseInt(document.getElementById("size").value),
+		height :  parseInt(document.getElementById("size").value),
+		correctLevel:  parseInt(document.getElementById("quality").value)
+	});
 
 function makeCode () {		
 	var elText = document.getElementById("text");
@@ -33,7 +46,6 @@ function makeCode () {
 }
 
 makeCode();
-
 $("#text").
 	on("blur", function () {
 		makeCode();
@@ -43,5 +55,17 @@ $("#text").
 			makeCode();
 		}
 	});
+function changeQR(){
+	
+	document.getElementById("qrcode").innerHTML = "";
+	let size = parseInt(document.getElementById("size").value);
+	document.getElementById("qrcode").style="width:"+size+"px; height:"+size+"px; margin-top:15px;margin-left:calc(50vw - "+size/2+"px);"
+	qrcode = new QRCode(document.getElementById("qrcode"), {
+		width :  size,
+		height :  size,
+		correctLevel:  parseInt(document.getElementById("quality").value)
+	});
+	makeCode();
+}
 </script>
 </body>
