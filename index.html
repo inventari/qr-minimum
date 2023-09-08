@@ -1,5 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 <title>Cross-Browser QRCode generator for Javascript</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -8,13 +8,16 @@
 <script type="text/javascript" src="qrcode.js"></script>
 </head>
 <body>
-<input id="text" type="text" value="http://jindo.dev.naver.com/collie" style="width:80%" /><br />
-<div id="qrcode" style="width:100px; height:100px; margin-top:15px;"></div>
-
+	<div style="width:400px;margin-left:calc(50vw - 200px);">
+	<h1>QRCode generator</h1>
+	<h2>Change text and hit enter</h2>
+	<input id="text" type="text" value="http://www.velosio.com" style="width:100%;"/>
+</div>
+	<div id="qrcode" style="width:400px; height:400px; margin-top:15px;margin-left:calc(50vw - 200px);"></div>
 <script type="text/javascript">
 var qrcode = new QRCode(document.getElementById("qrcode"), {
-	width : 100,
-	height : 100
+	width : 400,
+	height : 400
 });
 
 function makeCode () {		
