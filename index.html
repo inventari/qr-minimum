@@ -59,7 +59,13 @@
 		</div>
 	</div>
 	<div id="qrcode"></div>
+	<footer><a href="https://github.com/inventari/qr-minimum">Repo</a></footer>
 <script type="text/javascript">
+try{
+	document.getElementById("text").value = "https://" + location.hostname.split('.').reverse().splice(0,2).reverse().join('.') + "/";
+} catch(e){
+	
+}
 var qrcode = new QRCode(document.getElementById("qrcode"), {
 		width :  parseInt(document.getElementById("size").value),
 		height :  parseInt(document.getElementById("size").value),
